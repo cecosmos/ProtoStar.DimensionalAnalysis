@@ -41,7 +41,7 @@ namespace ProtoStar.DimensionalAnalysis
             TValue fallback = default) =>
             source.TryGetValue(key, out TValue result) ? result : fallback;
 
-        public static bool IsDimensionalConsistent(this IDimensionDependent source, IDimensionDependent target) =>
+        public static bool IsDimensionallyConsistent(this IDimensionDependent source, IDimensionDependent target) =>
             source.Dimension.Equals(target.Dimension);
 
     }

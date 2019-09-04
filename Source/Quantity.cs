@@ -24,8 +24,8 @@ namespace ProtoStar.DimensionalAnalysis
 
         public double this[IUnit unit]
         {
-            get => this.IsDimensionalConsistent(unit) ? ConvertFromSI(SIValue,unit) : throw new Exception();
-            set => SIValue = this.IsDimensionalConsistent(unit) ? ConvertToSI(value,unit) : throw new Exception();
+            get => this.IsDimensionallyConsistent(unit) ? ConvertFromSI(SIValue,unit) : throw new Exception();
+            set => SIValue = this.IsDimensionallyConsistent(unit) ? ConvertToSI(value,unit) : throw new Exception();
         }
 
         public double SIValue { get; set; }
@@ -39,12 +39,12 @@ namespace ProtoStar.DimensionalAnalysis
 
         public int CompareTo(IQuantity other)
         {
-            return SIValue.CompareTo(other.SIValue);
+            return SIValue.CompareTo(other?.SIValue);
         }
 
         public bool Equals(IQuantity other)
         {
-            return this.IsDimensionalConsistent(other) && SIValue.Equals(other.SIValue);
+            return this.IsDimensionallyConsistent(other) && SIValue.Equals(other.SIValue);
         }
     }
 }
